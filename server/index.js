@@ -1,6 +1,5 @@
 const express = require("express")
 const app = express()
-const port = 5000
 const bodyParser = require("body-parser")
 const { User } = require("./models/User")
 const config = require("./config/key")
@@ -25,6 +24,10 @@ mongoose
   .catch((err) => console.log(err))
 
 app.get("/", (req, res) => res.send("안녕하세요131~1~1212!"))
+
+app.get("/api/hello", (req, res) => {
+  res.send("안녕하세요")
+})
 
 //회원 가입
 app.post("/register", (req, res) => {
@@ -95,6 +98,7 @@ app.get("/api/users/logout", auth, (req, res) => {
     })
   })
 })
+const port = 5000
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
